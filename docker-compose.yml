@@ -39,6 +39,17 @@ services:
       - HUB_PORT=4444
     networks: 
       - wordpress-db
+  firefox:
+    image: selenium/node-firefox-debug
+    depends_on:
+      - seleniumhub
+    ports:
+      - "5901:5900"
+    environment:
+      - HUB_HOST=seleniumhub
+      - HUB_PORT=4444
+    networks: 
+      - wordpress-db
   guacd:
     hostname: guacd
     image: guacamole/guacd
@@ -68,4 +79,4 @@ services:
       - wordpress-db
 networks:
   wordpress-db:
-    driver: overlay
+    driver: bridge
