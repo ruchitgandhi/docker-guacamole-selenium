@@ -1,5 +1,5 @@
 # docker-guacamole-selenium
-Instructions to setup Apache Guacamole to remote into Docker Selenium Nodes:
+## Instructions to setup Apache Guacamole to remote into Docker Selenium Nodes:
 
 1) Bring up all the containers:
 #### docker-compose up -d
@@ -23,3 +23,16 @@ Password - secret (this is the default password that the chrome debug node has f
 6) Once you open the connection, you can go to the Google Chrome in the remote box and search for "http://wordpress:80". The wordpress docker instance that you have will be seen. Note "wordpress" is the name of the container as mentioned in docker-compose file.
 
 This completes the setup to see the chrome node's UI through Apache Guacamole.
+
+## Instructions to run test container to run Selenium tests on Wordpress in the docker chrome/firefox nodes
+1) Build the docker image for test
+#### docker-compose build
+
+2) Start the containers
+#### docker-compose up -d
+
+3) The "test" container will start and go down. To check whether the tests are running successfully:
+#### docker-compose run test
+Here "test" is the name of container in docker-compose file. This will run the selenium test and show its output on the command prompt. This way you can verify if the test is successfull or not.
+
+If the test (seleniumTest.js) is changed then run steps 1-3 again to see it in effect.
