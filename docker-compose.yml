@@ -50,6 +50,10 @@ services:
       - HUB_PORT=4444
     networks: 
       - wordpress-db
+  test:
+    build: selenium-test
+    networks:
+      - wordpress-db
   guacd:
     hostname: guacd
     image: guacamole/guacd
